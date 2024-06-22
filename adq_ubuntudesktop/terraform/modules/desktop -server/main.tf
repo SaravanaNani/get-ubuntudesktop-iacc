@@ -36,5 +36,7 @@ resource "google_compute_instance" "desktop-server" {
     email  = var.svc_email
     scopes = ["cloud-platform"]
   }
-
+  metadata = {
+    ssh-keys = "root:${file("/var/lib/jenkins/.ssh/id_rsa.pub")}"
+  }
 }
